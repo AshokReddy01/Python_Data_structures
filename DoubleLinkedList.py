@@ -1,5 +1,5 @@
 import time
-
+from pympler import asizeof
 class Node:
     length=0
     head=None
@@ -95,9 +95,20 @@ class Node:
         currentNode=self.head
         self.head=currentNode.get_nextnode()
         self.head.set_pre_node(None)  
+        self.length-=1
         
-     
-# ''''''    def inserValueAtEnd(self,value):
+    def deleteAtEnding(self):
+        currentNode=self.head
+        preNode=None
+        while currentNode.get_nextnode()!=None:
+            preNode=currentNode
+            currentNode=currentNode.get_nextnode()
+        preNode.set_nextnode(None)
+        currentNode.set_pre_node(None)
+        self.length-=1
+        del currentNode     
+        
+# ''def inserValueAtEnd(self,value):
 #         currentNode=self.head
 #         while currentNode.get_nextnode()!=None :
 #             currentNode=currentNode.get_nextnode()
@@ -106,22 +117,32 @@ class Node:
 #         newNode.set_pre_node(currentNode)
 #         newNode.get_nextnode(None)
 #         currentNode.get_nextnode(newNode)
-#         self.length+=1'''
+#         self.length+=1
+
+
 # et=time.time()   
 # head=Node()
+# #Size In bytes
+# print("\nMemory 0st node    : ",asizeof.asizeof(head))
 # head.insertValueAtStarting(21)
+# print("\nMemory 1st node    : ",asizeof.asizeof(head))
 # head.insertValueAtStarting(22)
-# 
+#  
+# print("\nMemory  2nd node  : ",asizeof.asizeof(head))
 # head.insertValueAtStarting(24)
-# 
+#  
+# print("\nMemory  3nd node  : ",asizeof.asizeof(head))
 # head.insertValueAtStarting(23)
-# 
+#  
+# print("\nMemory  4nd node  : ",asizeof.asizeof(head))
 # head.insertValueInLast(100)
-# 
+#  
+# print("\nMemory  5nd node  : ",asizeof.asizeof(head))
 # head.addValueAfter(215, 22)
-# 
+#  
 # head.deleteAtStarting()
-# 
+# head.deleteAtEnding()
 # head.Display()  
-# print()
-# print(time.time()-et)
+# print("\nMemory    : ",asizeof.asizeof(head))
+# print("List Length : ",head.length)
+# print("Time to do  : ",time.time()-et)
