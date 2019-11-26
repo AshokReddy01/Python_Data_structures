@@ -81,7 +81,8 @@ class Node:
             prev.setNext(current.getNext())
             self.length-=1
             
-            
+    def anil(self):
+        pass    
 #create a object and example
 # head=Node()
 # head.insert_at_back( 25)
